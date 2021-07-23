@@ -2,17 +2,16 @@ import React, {useState, useEffect} from 'react';
 import AddTasks from './AddTasks';
 import './App.css';
 
-function Tasks({task}) {
-
+const Task = ({ tasks }) => {
   return (
-    <div className="Tasks">
-      {task.map(item => <div>
-        {item}
-      </div>)}
-      {   
+    <div className="Taskы">
+      { tasks.map(item => 
+      <div>
+        { item }
+      </div>) 
       }
     </div>
   );
 }
 
-export default Tasks;
+export default Task;
