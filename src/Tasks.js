@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import AddTasks from './AddTasks';
-import './App.css';
+// import React, {useState, useEffect} from 'react';
+// import AddTasks from './AddTasks';
+// import './App.css';
+// import Delete from './images/delete.svg';
+// import axios from 'axios'
 
-const Task = ({ tasks }) => {
-  return (
-    <div className="Taskы">
-      { tasks.map(item => 
-      <div>
-        { item }
-      </div>) 
-      }
-    </div>
-  );
-}
+// const Tasks = ({ task }) => {
 
-export default Task;
+//   deleteTask = async() => {
+//     await axios.post(`http://localhost:8000/deleteTasks?:${task.id}`).then(res => {
+//       setTasks(res.data.data);
+//     })
+//   }
+//   return (
+    
+//   );
+// }
+
+// export default Tasks;
