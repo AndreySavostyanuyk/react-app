@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import AddTasks from './AddTasks';
 import './App.css';
 import axios from 'axios'
-
-function App() {
+App = () => {
   return (
     <div className="App">
       <header className="App-header">
