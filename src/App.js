@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Input from './Input';
-import './App.css';
+import AddTasks from './AddTasks';
+import './App.scss';
 import axios from 'axios'
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <h1>To-Do List</h1>
-        <Input />
+        <AddTasks />
       </header>
     </div>
   );
