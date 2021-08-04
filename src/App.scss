@@ -23,7 +23,7 @@
 }
 
 .Button.MuiButton-root {
-  margin-top: 34px;
+
 }
 
 .root {
@@ -61,6 +61,17 @@
 
 .container {
   width: 100%;
+}
+
+.addItems_container {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.addItems_container button {
+  margin: 24px 0px 0px 10px;
 }
 
 .item_img {

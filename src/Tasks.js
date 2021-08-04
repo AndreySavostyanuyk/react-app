@@ -52,7 +52,7 @@ const Tasks = ({ tasks, setTasks }) => {
     }).catch(err => console.log(err));
   };
 
-  const testFunction = (value, event) => {
+  const editChecked = (value, event) => {
     setChecked(event.isCheck)
 
     if (!checked) {
@@ -78,11 +78,11 @@ const Tasks = ({ tasks, setTasks }) => {
               <Checkbox
                 key={ index }
                 checked={ value.isCheck }
-                onClick={ (e) => testFunction(e.target.checked, value) }
+                onClick={ (e) => editChecked(e.target.checked, value) }
               />
             </ListItemIcon>
 
-            {currentIndex === index ?
+            { currentIndex === index ?
             <TextField
               className="item_input"
               label="Edit" 
@@ -98,7 +98,7 @@ const Tasks = ({ tasks, setTasks }) => {
               primary={value.text} 
             />
             }
-            {currentIndex === index ?
+            { currentIndex === index ?
               <div className="item_img"> 
                 <img 
                   src={ Ok } 
@@ -118,7 +118,7 @@ const Tasks = ({ tasks, setTasks }) => {
                 <img src={ Edit } 
                   onClick={ () => editTask(value, index) } 
                 />
-              </div>}
+              </div> }
           </ListItem>
         );
       })}

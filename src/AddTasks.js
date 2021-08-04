@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
-import { Button,  FormControl, InputBase, NativeSelect, Select, MenuItem, InputLabel, makeStyles, withStyles } from '@material-ui/core';
+import { 
+  Button,  
+  FormControl, 
+  InputBase, 
+  NativeSelect, 
+  Select, 
+  MenuItem, 
+  InputLabel, 
+  makeStyles,
+  withStyles } from '@material-ui/core';
 import axios from 'axios'
 import Tasks from './Tasks';
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-}));
-
 const AddTasks = () => {
-  const classes = useStyles();
   const [textInput, setTextInput] = React.useState('');
   const [tasks, setTasks] = React.useState([])
 
@@ -30,8 +32,8 @@ const AddTasks = () => {
 
   return (
     <div className="container">
-      <div>
-        <FormControl className={classes.margin}>
+      <div className="addItems_container">
+        <FormControl className="item_inputAdd">
           <InputLabel htmlFor="demo-customized-textbox">Task</InputLabel>
           <InputBase
             className="item_CustomInput"
@@ -44,9 +46,7 @@ const AddTasks = () => {
           className='Button'
           onClick={() => addNewTask()}
           variant="outlined"
-          color="primary">
-          Add
-        </Button>
+          color="primary">Add</Button>
       </div>
       <div className='tasks'>
         <Tasks
