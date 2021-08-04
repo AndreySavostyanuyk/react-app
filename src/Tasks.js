@@ -16,7 +16,6 @@ import axios from 'axios';
 
 const Tasks = ({ tasks, setTasks }) => {
   const [changeInput, setChangeInput] = React.useState('');
-  const [checked, setChecked] = React.useState(false)
   const [currentIndex, setCurrentIndex] = React.useState('');
 
   useEffect(() => {
@@ -52,17 +51,12 @@ const Tasks = ({ tasks, setTasks }) => {
     }).catch(err => console.log(err));
   };
 
-  const editChecked = (value, event) => {
-    setChecked(event.isCheck)
+  const editChecked = async(value) => {
+    value.isCheck = !value.isCheck;
 
-    if (!checked) {
-      setChecked(true)
-    } else {
-      setChecked(false)
-    };
     axios.patch('http://localhost:8000/editTasks', {
-      _id: event._id,
-      isCheck: checked
+      _id: value._id,
+      isCheck: value.isCheck
     }).then(res => {
       setTasks(res.data.data);
     });
@@ -78,11 +72,11 @@ const Tasks = ({ tasks, setTasks }) => {
               <Checkbox
                 key={ index }
                 checked={ value.isCheck }
-                onClick={ (e) => editChecked(e.target.checked, value) }
+                onClick={ () => editChecked(value) }
               />
             </ListItemIcon>
 
-            { currentIndex === index ?
+            {currentIndex === index ?
             <TextField
               className="item_input"
               label="Edit" 
@@ -98,7 +92,7 @@ const Tasks = ({ tasks, setTasks }) => {
               primary={value.text} 
             />
             }
-            { currentIndex === index ?
+            {currentIndex === index ?
               <div className="item_img"> 
                 <img 
                   src={ Ok } 
@@ -118,7 +112,8 @@ const Tasks = ({ tasks, setTasks }) => {
                 <img src={ Edit } 
                   onClick={ () => editTask(value, index) } 
                 />
-              </div> }
+              </div> 
+              }
           </ListItem>
         );
       })}
