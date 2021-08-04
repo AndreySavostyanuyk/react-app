@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import AddTasks from './AddTasks';
-import './App.css';
-import Tasks from './Tasks';
+import './App.scss';
+import axios from 'axios'
 
 const App = () => {
   return (

@@ -1,26 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { 
+  Button,  
+  FormControl, 
+  InputBase, 
+  NativeSelect, 
+  Select, 
+  MenuItem, 
+  InputLabel, 
+  makeStyles,
+  withStyles } from '@material-ui/core';
+import axios from 'axios'
 import Tasks from './Tasks';
-import './App.css';
 
 const AddTasks = () => {
-  const [task, setTask] = useState([]);
+  const [textInput, setTextInput] = React.useState('');
+  const [tasks, setTasks] = React.useState([])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    let updatedList = [...task, formData.get('task')]
-    setTask(updatedList)   
+  const handleChange = (event) => {
+    setTextInput(event);
   };
-  
+
+  const addNewTask = () => {
+    axios.post('http://localhost:8000/createTasks', {
+      text: textInput,
+      isCheck: false
+    }).then(res => {
+      setTextInput('');
+      setTasks(res.data.data);
+    })    
+  };
+
   return (
-    <div>
-      <form className="Add" onSubmit={handleSubmit}>
-        <input type='text' id="task" name="task" />
-        <button>Add</button>
-      </form>
-
-      <Tasks tasks={task}/>
-
+    <div className="container">
+      <div className="addItems_container">
+        <FormControl className="item_inputAdd">
+          <InputLabel htmlFor="demo-customized-textbox">Task</InputLabel>
+          <InputBase
+            className="item_CustomInput"
+            value={textInput} 
+            onChange={(e) => handleChange(e.target.value)} 
+            id="demo-customized-textbox" 
+          />
+        </FormControl>
+        <Button
+          className='Button'
+          onClick={() => addNewTask()}
+          variant="outlined"
+          color="primary">Add</Button>
+      </div>
+      <div className='tasks'>
+        <Tasks
+          setTasks={setTasks}
+          tasks={tasks} 
+        />
+      </div>
     </div>
   );
 }
